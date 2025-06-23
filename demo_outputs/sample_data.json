@@ -1,0 +1,31 @@
+{
+  "title": "Sample Presentation Data",
+  "subtitle": "For testing and development",
+  "author": "Demo System",
+  "template": "education",
+  "slides": [
+    {
+      "type": "content",
+      "title": "Welcome",
+      "content": [
+        "Welcome to the demo presentation",
+        "This data can be used for testing",
+        "Modify as needed for your use case"
+      ]
+    },
+    {
+      "type": "two_column",
+      "title": "Features",
+      "left_content": [
+        "AI Content Generation",
+        "Multiple Templates",
+        "Real-time Editing"
+      ],
+      "right_content": [
+        "PowerPoint Export",
+        "Web Interface",
+        "Easy Customization"
+      ]
+    }
+  ]
+}
