@@ -3,3 +3,5 @@ openai==0.28
 requests
 pandas
 python-pptx
+Pillow
+typing-extensions

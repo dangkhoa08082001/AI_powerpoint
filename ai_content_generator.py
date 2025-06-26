@@ -6,9 +6,13 @@ Module để generate nội dung PowerPoint sử dụng ChatGPT API
 import openai
 import json
 import re
+import requests
+import os
 from typing import Dict, List, Optional, Any
 import logging
 from datetime import datetime
+from PIL import Image
+import io
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -31,6 +35,16 @@ class AIContentGenerator:
         self.model = model
         self.max_tokens = 3000
         self.temperature = 0.7
+        
+        # DALL-E settings
+        self.dalle_enabled = True
+        self.dalle_size = "1024x1024"
+        self.dalle_quality = "standard"
+        self.images_dir = "dalle_images"
+        
+        # Tạo thư mục images nếu chưa có
+        if not os.path.exists(self.images_dir):
+            os.makedirs(self.images_dir)
         
         # System prompts cho different types
         self.system_prompts = {

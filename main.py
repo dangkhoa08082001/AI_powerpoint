@@ -13,6 +13,8 @@ import traceback
 # Import custom modules
 from powerpoint_generator import PowerPointGenerator
 from ai_content_generator import AIContentGenerator
+from dalle_generator import DALLEImageGenerator
+from theme_system import theme_system
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
@@ -124,6 +126,15 @@ class PowerPointApp:
         
         if 'editing_mode' not in st.session_state:
             st.session_state.editing_mode = False
+        
+        if 'dalle_generator' not in st.session_state:
+            st.session_state.dalle_generator = None
+        
+        if 'enable_dalle' not in st.session_state:
+            st.session_state.enable_dalle = True
+        
+        if 'selected_theme' not in st.session_state:
+            st.session_state.selected_theme = 'tech_gradient'
     
     def setup_sidebar(self):
         """Setup sidebar với các cài đặt"""
@@ -141,7 +152,8 @@ class PowerPointApp:
                 if st.session_state.ai_generator is None or st.session_state.ai_generator.model != "gpt-3.5-turbo":
                     try:
                         st.session_state.ai_generator = AIContentGenerator(api_key)
-                        st.success("✅ Đã kết nối AI thành công!")
+                        st.session_state.dalle_generator = DALLEImageGenerator(api_key)
+                        st.success("✅ Đã kết nối AI + DALL-E thành công!")
                     except Exception as e:
                         st.error(f"❌ Lỗi kết nối AI: {str(e)}")
             else:
@@ -161,6 +173,24 @@ class PowerPointApp:
                 "Thêm ví dụ thực tế",
                 value=True,
                 help="AI sẽ tự động thêm các ví dụ và case studies"
+            )
+            
+            # DALL-E settings
+            st.subheader("🎨 Cài đặt DALL-E")
+            enable_dalle = st.checkbox(
+                "🖼️ Tạo ảnh với DALL-E", 
+                value=True,
+                help="Tự động tạo ảnh minh họa cho slides"
+            )
+            
+            # Theme selection
+            st.subheader("🎨 Chọn Theme")
+            available_themes = theme_system.list_available_themes()
+            selected_theme = st.selectbox(
+                "Template Theme",
+                options=list(available_themes.keys()),
+                format_func=lambda x: f"{x} - {available_themes[x]}",
+                help="Chọn theme cho presentation"
             )
             
             st.divider()
@@ -282,8 +312,32 @@ class PowerPointApp:
                 # Store presentation data
                 st.session_state.presentation_data = presentation_data
                 
+                # Generate images with DALL-E if enabled
+                generated_images = {}
+                if (st.session_state.get('enable_dalle', True) and 
+                    st.session_state.dalle_generator and 
+                    "có hình ảnh" in user_input.lower() or "có ảnh" in user_input.lower()):
+                    
+                    with st.spinner("🎨 Đang tạo ảnh minh họa với DALL-E..."):
+                        try:
+                            generated_images = st.session_state.dalle_generator.generate_images_for_presentation(
+                                presentation_data
+                            )
+                            
+                            if generated_images:
+                                # Add image paths to presentation data
+                                for slide in presentation_data.get('slides', []):
+                                    slide_num = str(slide.get('slide_number'))
+                                    if slide_num in generated_images:
+                                        slide['image_path'] = generated_images[slide_num]
+                                        
+                        except Exception as e:
+                            logger.warning(f"DALL-E image generation failed: {str(e)}")
+                            st.warning("⚠️ Không thể tạo ảnh DALL-E, nhưng presentation vẫn được tạo thành công!")
+                
                 # Add AI response to history
-                ai_response = f"Đã tạo thành công bài giảng '{presentation_data.get('title', 'Không có tiêu đề')}' với {len(presentation_data.get('slides', []))} slides."
+                image_info = f" (đã tạo {len(generated_images)} ảnh minh họa)" if generated_images else ""
+                ai_response = f"Đã tạo thành công bài giảng '{presentation_data.get('title', 'Không có tiêu đề')}' với {len(presentation_data.get('slides', []))} slides{image_info}."
                 
                 st.session_state.conversation_history.append({
                     'role': 'ai',
@@ -294,7 +348,11 @@ class PowerPointApp:
                 # Auto switch to preview mode
                 st.session_state.editing_mode = True
                 
-                st.success("✅ Đã tạo thành công! Kiểm tra kết quả bên dưới.")
+                success_msg = "✅ Đã tạo thành công! Kiểm tra kết quả bên dưới."
+                if generated_images:
+                    success_msg += f" 🎨 Đã tạo {len(generated_images)} ảnh minh họa!"
+                
+                st.success(success_msg)
                 st.rerun()
                 
         except Exception as e:
