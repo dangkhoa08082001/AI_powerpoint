@@ -1,134 +1,289 @@
-# 🎓 AI PowerPoint Generator
+# 🎓 Enhanced AI PowerPoint Generator
 
-🤖 **Automatically generate PowerPoint presentations using AI with DALL-E image generation**
+## Tổng quan
+Enhanced AI PowerPoint Generator là một ứng dụng thông minh sử dụng ChatGPT và DALL-E để tạo ra các bài thuyết trình PowerPoint chuyên nghiệp với khả năng **tương tác**, **tạo hình ảnh tự động** và **chọn theme thông minh**.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-url.streamlit.app)
-[![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://python.org)
-[![OpenAI](https://img.shields.io/badge/powered%20by-OpenAI-green.svg)](https://openai.com)
+## ✨ Tính năng nâng cao
 
-## ✨ Features
+### 🗣️ Tương tác thông minh
+- **Hỏi đáp tự động**: AI hỏi câu hỏi để hiểu rõ nhu cầu
+- **Thu thập thông tin**: Xác định đối tượng, thời gian, mức độ chi tiết
+- **Tùy chỉnh style**: Chọn phong cách trình bày phù hợp
+- **Theo dõi tiến độ**: Hiển thị quá trình tạo presentation
 
-### 🤖 AI Content Generation
-- **ChatGPT Integration**: Smart automatic lecture content generation
-- **DALL-E Images**: Automatic illustration generation for each slide
-- **Content Analysis**: AI analyzes topics and creates appropriate images
+### 🎨 Tạo hình ảnh tự động  
+- **Phân tích nội dung**: AI xác định slides cần hình ảnh minh họa
+- **DALL-E integration**: Tự động tạo ảnh phù hợp với từng slide
+- **Ưu tiên thông minh**: Ưu tiên tạo ảnh cho slides quan trọng
+- **Concepts thông minh**: Tạo prompt phù hợp với môn học và chủ đề
 
-### 🖼️ Smart Image Processing
-- **Two-column layout**: Image on left, content on right
-- **Auto-resize**: Automatic image size adjustment
-- **Fallback placeholder**: Display placeholder when image fails
+### 🎯 Theme thông minh
+- **Tự động chọn theme**: AI phân tích nội dung để chọn theme phù hợp
+- **Nhiều template**: Education, Business, Tech, Creative themes
+- **Icons tự động**: Thêm icons phù hợp cho từng slide
+- **Color schemes**: Bảng màu chuyên nghiệp
 
-### 📝 Content Processing
-- **Smart truncation**: Intelligent truncation by words/sentences
-- **Bullet points**: Automatic creation of 4-5 key points per slide
-- **Template system**: Support for multiple templates (education, business)
+### 📊 Phân tích và tối ưu
+- **Cấu trúc logic**: Tạo outline có tính thuyết phục
+- **Thời gian hợp lý**: Ước tính thời gian cho từng slide
+- **Nội dung phù hợp**: Điều chỉnh theo đối tượng và mức độ
+- **Visual elements**: Thêm biểu tượng và elements phù hợp
 
-## 🚀 Quick Start
+## 🚀 Hướng dẫn sử dụng
 
-### 1. Installation
-```bash
-pip install -r requirements.txt
-```
-
-### 2. Run Application
+### Bước 1: Khởi động ứng dụng
 ```bash
 streamlit run main.py
 ```
 
-### 3. Usage
-1. Enter your OpenAI API Key in the sidebar
-2. Type a request like: "Create a lecture with images about Cell Biology"
-3. Wait for AI to generate presentation with images
-4. Download the PowerPoint file
+### Bước 2: Cấu hình API Keys
+1. Nhập **OpenAI API Key** trong sidebar
+2. Chọn model GPT (gpt-3.5-turbo hoặc gpt-4)
+3. Bật/tắt các tính năng:
+   - 🗣️ Chế độ tương tác
+   - 🖼️ Tự động tạo ảnh DALL-E
+   - 🎯 Tự động chọn theme
 
-## 📁 Project Structure
+### Bước 3: Tạo presentation (Chế độ tương tác)
+1. **Nhập yêu cầu ban đầu**: 
+   ```
+   "Tạo bài giảng Sinh học lớp 10 về cấu trúc tế bào"
+   ```
+
+2. **Trả lời câu hỏi AI**:
+   - Đối tượng khán giả
+   - Thời gian trình bày
+   - Mức độ chi tiết
+   - Style ưa thích
+
+3. **AI tự động**:
+   - Phân tích nội dung để tạo hình ảnh
+   - Chọn theme phù hợp
+   - Tạo icons và visual elements
+   - Generate ảnh DALL-E
+
+### Bước 4: Xem và tùy chỉnh
+- **Tab Preview**: Xem trước toàn bộ presentation
+- **Tab Customize**: Chọn theme, chỉnh sửa nội dung
+- **Tab Download**: Tải xuống PowerPoint, JSON hoặc xem ảnh
+
+## 🎨 Hệ thống Theme
+
+### Education Pro
+- **Màu sắc**: Ocean Blue, Magenta, Orange
+- **Phù hợp**: Giáo dục, training, học thuật
+- **Font**: Calibri family
+
+### Tech Gradient  
+- **Màu sắc**: Blue Purple gradient
+- **Phù hợp**: Công nghệ, lập trình, AI
+- **Font**: Arial family
+
+### Business Elegant
+- **Màu sắc**: Deep Blue, Orange professional
+- **Phù hợp**: Doanh nghiệp, corporate
+- **Font**: Times New Roman
+
+### Creative Vibrant
+- **Màu sắc**: Pink, Purple, Cyan
+- **Phù hợp**: Sáng tạo, marketing, design
+- **Font**: Comic Sans MS
+
+## 🖼️ Hệ thống tạo ảnh
+
+### Phân tích thông minh
+- **High Priority**: Slides có keywords về cấu trúc, mô hình, sơ đồ
+- **Medium Priority**: Slides khoa học, kỹ thuật
+- **Auto Detection**: Tự động phát hiện môn học và tạo prompt phù hợp
+
+### Subjects hỗ trợ
+- 🧬 **Sinh học**: Cell structure, DNA, proteins
+- ⚛️ **Vật lý**: Light, electricity, energy
+- ⚗️ **Hóa học**: Reactions, atoms, molecules  
+- 📐 **Toán học**: Geometry, graphs, equations
+- 💼 **Business**: Digital marketing, strategy
+- 💻 **Tech**: Programming, algorithms, data
+
+## 📊 Luồng hoạt động
+
+```mermaid
+graph TD
+    A[Nhập yêu cầu] --> B{Chế độ tương tác?}
+    B -->|Có| C[AI hỏi câu hỏi]
+    B -->|Không| D[Tạo nhanh]
+    C --> E[Thu thập thông tin]
+    E --> F[Phân tích và tạo outline]
+    D --> F
+    F --> G[Tạo nội dung chi tiết]
+    G --> H[Phân tích cho hình ảnh]
+    H --> I[Chọn theme tự động]
+    I --> J[Thêm icons và visual]
+    J --> K[Generate ảnh DALL-E]
+    K --> L[Hoàn thành presentation]
+```
+
+## 🛠️ Cài đặt và yêu cầu
+
+### Yêu cầu hệ thống
+```
+Python 3.8+
+Streamlit
+OpenAI API
+python-pptx
+Pillow
+```
+
+### Cài đặt dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### File requirements.txt
+```
+streamlit>=1.28.0
+openai>=0.28.0
+python-pptx>=0.6.21
+Pillow>=10.0.0
+requests>=2.31.0
+```
+
+## 📁 Cấu trúc project
 
 ```
-AI_powerpoint/
-├── main.py                    # 🎯 Main Streamlit application
-├── ai_content_generator.py    # 🤖 AI content generation + DALL-E
-├── powerpoint_generator.py    # 📊 PowerPoint file creation
-├── theme_system.py           # 🎨 Theme and styling system
-├── requirements.txt          # 📦 Dependencies
-└── README.md                # 📖 Documentation
+duan_pp/
+├── main.py                    # Enhanced Streamlit app
+├── ai_content_generator.py    # Enhanced AI generator với tương tác
+├── dalle_generator.py         # DALL-E image generation
+├── theme_system.py           # Modern theme system
+├── powerpoint_generator.py   # PowerPoint file generation
+├── requirements.txt          # Dependencies
+├── README.md                 # Documentation
+└── dalle_images/            # Generated images storage
 ```
 
-## 🔧 Environment Setup
+## 🔧 Tùy chỉnh nâng cao
 
-Create a `.env` file in the root directory:
+### Thêm theme mới
+```python
+# Trong theme_system.py
+"custom_theme": {
+    "name": "Custom Theme",
+    "colors": {
+        "primary": "#your_color",
+        "secondary": "#your_color"
+    },
+    "fonts": {
+        "title": {"size": 36, "family": "Arial"}
+    }
+}
 ```
-OPENAI_API_KEY=your_openai_api_key_here
+
+### Tùy chỉnh DALL-E prompts
+```python
+# Trong dalle_generator.py
+def _create_image_prompt(self, slide_title, topic):
+    # Thêm logic custom cho domain cụ thể
+    if "your_domain" in topic.lower():
+        return "your custom prompt"
 ```
 
-## 🎨 Template Types
+## 🎯 Use Cases
 
-### Education (Default)
-- Primary color: Blue (#2E86AB)
-- Font size: Title 32pt, Content 18pt
-- Best for: Lectures, educational content
+### Giáo dục
+- **Bài giảng các môn học**: Toán, Lý, Hóa, Sinh, Sử, Địa
+- **Giáo án điện tử**: Cấu trúc bài học, mục tiêu, hoạt động
+- **Training materials**: Đào tạo giáo viên, workshop
 
-### Business
-- Primary color: Navy (#1565C0)
-- Font size: Title 36pt, Content 20pt
-- Best for: Business presentations
+### Doanh nghiệp
+- **Business presentations**: Kế hoạch kinh doanh, báo cáo
+- **Marketing materials**: Chiến lược digital, campaigns
+- **Training nội bộ**: Onboarding, skill development
 
-## 📚 Supported Subjects
+### Học thuật & Nghiên cứu
+- **Conference presentations**: Research findings
+- **Thesis defense**: Luận văn, luận án
+- **Academic lectures**: Đại học, sau đại học
 
-- **Biology**: Biological diagrams, cells, DNA
-- **Physics**: Physics diagrams, optics
-- **Chemistry**: Molecular structures, reactions
-- **Mathematics**: Geometry, algebra
-- **Marketing**: Business infographics
-- **History**: Historical illustrations, culture
+## 🚨 Lưu ý quan trọng
 
-## 🐛 Troubleshooting
+### API Costs
+- **ChatGPT**: ~$0.002/1K tokens (gpt-3.5-turbo)
+- **DALL-E**: ~$0.020/image (1024x1024)
+- **Ước tính**: 1 presentation = $0.10-0.50
 
-### Common Issues
+### Giới hạn
+- **Slides**: Tối ưu cho 5-15 slides
+- **Images**: Tối đa 10 ảnh/presentation  
+- **Content**: Phù hợp với mô hình ngôn ngữ
 
-1. **"❌ API key required"**
-   - Enter OpenAI API key in sidebar
-   - Ensure API key is valid
+### Bảo mật
+- API keys được lưu local trong session
+- Không upload dữ liệu lên server
+- Generated images lưu tạm local
 
-2. **"❌ DALL-E error"**
-   - Check OpenAI credits
-   - Try again with different topic
+## 🤝 Đóng góp
 
-3. **"Images not displaying"**
-   - Normal! Will show placeholder
-   - PowerPoint file still created successfully
+### Báo lỗi
+- Tạo issue trên GitHub với mô tả chi tiết
+- Bao gồm logs và steps reproduce
 
-## 📊 Technical Specifications
+### Feature requests
+- Đề xuất tính năng mới qua GitHub issues
+- Mô tả use case và lợi ích
 
-- **Python**: 3.7+
-- **Streamlit**: Web interface
-- **OpenAI**: GPT-3.5 + DALL-E
-- **python-pptx**: PowerPoint generation
+### Development
+```bash
+# Fork repository
+# Tạo feature branch
+git checkout -b feature/amazing-feature
 
-## 🌐 Deploy on Streamlit Cloud
+# Commit changes
+git commit -m "Add amazing feature"
 
-1. Fork this repository
-2. Connect to [Streamlit Cloud](https://streamlit.io/cloud)
-3. Add your `OPENAI_API_KEY` to secrets
-4. Deploy with one click!
+# Push và tạo Pull Request
+```
 
-## 🤝 Contributing
+## 📞 Hỗ trợ
 
-1. Fork the project
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+### Documentation
+- README.md (file này)
+- Code comments trong từng module
+- Docstrings cho các functions
 
-## 📝 License
+### Community
+- GitHub Issues cho bugs và features
+- Wiki cho guides chi tiết
 
-This project is open source and available under the [MIT License](LICENSE).
+## 🔮 Tính năng tương lai
+
+### Version 2.0 (Planned)
+- 🎬 **Animation support**: Transition effects
+- 🗣️ **Voice narration**: Text-to-speech integration  
+- 📱 **Mobile responsive**: Responsive design
+- 🌐 **Multi-language**: Support English, Chinese
+- 📊 **Advanced charts**: Data visualization
+- 🤖 **AI editing**: Intelligent content optimization
+
+### Version 2.1 (Wishlist)
+- 🎥 **Video integration**: Embedded videos
+- 📈 **Analytics**: Presentation effectiveness metrics
+- 🔄 **Version control**: Track changes, rollback
+- 👥 **Collaboration**: Multi-user editing
+- ☁️ **Cloud sync**: Save to cloud storage
+
+## 📜 License
+
+MIT License - Xem file LICENSE để biết chi tiết.
 
 ## 🙏 Acknowledgments
 
-- **OpenAI** for GPT and DALL-E APIs
-- **Streamlit** for the amazing web framework
-- **python-pptx** for PowerPoint generation
+- **OpenAI**: ChatGPT và DALL-E APIs
+- **Streamlit**: Web framework tuyệt vời
+- **python-pptx**: PowerPoint generation library
+- **Community**: Contributors và feedback
 
 ---
 
-**Made with ❤️ using OpenAI GPT + DALL-E** 
+**Made with ❤️ for better presentations**
+
+*Tạo presentation chưa bao giờ dễ dàng và thông minh đến thế!* 

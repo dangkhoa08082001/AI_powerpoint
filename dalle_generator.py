@@ -205,8 +205,7 @@ class DALLEImageGenerator:
             response = openai.Image.create(
                 prompt=prompt,
                 n=1,
-                size=self.dalle_size,
-                quality=self.dalle_quality
+                size=self.dalle_size
             )
             
             if response.data and len(response.data) > 0:
@@ -299,34 +298,4 @@ def create_dalle_generator(api_key: str) -> DALLEImageGenerator:
     """
     return DALLEImageGenerator(api_key)
 
-def test_dalle_generation(api_key: str):
-    """
-    Test function cho DALL-E generation
-    
-    Args:
-        api_key (str): OpenAI API key
-    """
-    generator = create_dalle_generator(api_key)
-    
-    test_slide = {
-        "slide_number": 2,
-        "type": "content",
-        "title": "Cấu trúc tế bào",
-        "content": {"main_points": ["Nhân tế bào", "Tế bào chất", "Màng tế bào"]}
-    }
-    
-    image_path = generator.generate_image_for_slide(test_slide, "Sinh học tế bào")
-    
-    if image_path:
-        print(f"✅ Test thành công! Ảnh được lưu tại: {image_path}")
-    else:
-        print("❌ Test thất bại!")
-
-if __name__ == "__main__":
-    # Test với API key từ environment
-    import os
-    api_key = os.getenv("OPENAI_API_KEY")
-    if api_key:
-        test_dalle_generation(api_key)
-    else:
-        print("❌ Cần set OPENAI_API_KEY environment variable để test") 
+ 

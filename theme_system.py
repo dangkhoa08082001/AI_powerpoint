@@ -186,7 +186,7 @@ class ModernThemeSystem:
             # Science Icons
             "biology": "🧬",
             "chemistry": "⚗️",
-            "physics": "⚛️",
+            "physics": "⚛️", 
             "math": "📐",
             "lab": "🔬",
             "experiment": "🧪",
